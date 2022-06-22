@@ -4,7 +4,7 @@
         <title>Tasks</title>
         <script>
             document.addEventListener('DOMContentLoaded', function(){
-
+                document.querySelector('h2').hidden = false
                 document.querySelector('#submit').disabled = true;
                 document.querySelector('#task').onkeyup = () =>{
                     if (document.querySelector('#task').value.length > 0) {
@@ -18,7 +18,7 @@
                     const task = document.querySelector('#task').value;
                     const li = document.createElement('li');
                     li.innerHTML = task;
-
+                    document.querySelector('h2').hidden = true
                     document.querySelector('#tasks').append(li)
                     document.querySelector('#task').value = '';
                     document.querySelector('#submit').disabled = true;
@@ -27,12 +27,18 @@
                 }
             });
         </script>
+        <style>
+            h1, h2, li{
+                font-family: Arial, Helvetica, sans-serif;
+            }
+        </style>
     </head>
     <body>
         <h1>Tasks</h1>
         <ul id="tasks">
 
         </ul>
+        <h2 hidden>--There are no tasks!--</h2>
         <form>
             <input autofocus id="task" placeholder="New Task" type="text">
             <input id="submit" type="submit">
